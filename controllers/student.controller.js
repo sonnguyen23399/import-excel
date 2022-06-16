@@ -1,10 +1,10 @@
 const XLSX = require("xlsx");
-const Movie = require("../models/student.model")
+const Student = require("../models/student.model")
 const outputPath = 'storage/outputs'
 
 exports.index = async(req, res) => {
-    const movies = await Movie.findAll();
-    return res.render('index', { movies });
+    const students = await Student.findAll();
+    return res.render('index', { students });
 }
 
 exports.import = async(req, res) => {
@@ -13,44 +13,13 @@ exports.import = async(req, res) => {
 
     if (sheets.length > 0) {
         const data = XLSX.utils.sheet_to_json(wb.Sheets[sheets[0]]);
-        const movies = data.map(row => ({
+        const students = data.map(row => ({
             school: row['School'],
             class: row['Class'],
             name: row['Name'],
             school: row['Score']
         }))
-        await Movie.bulkCreate(movies);
+        await Student.bulkCreate(students);
     }
     return res.redirect('/');
 }
-
-// exports.export = async(req, res) => {
-//     const movies = await Movie.findAll({
-//         attributes: [
-//             'id',
-//             'movie',
-//             'category',
-//             'director',
-//             'rating'
-//         ],
-//         raw: true
-//     });
-
-//     const headings = [
-//         ['Id', 'Movie', 'Category', 'Director', 'Rating']
-//     ];
-
-//     const wb = XLSX.utils.book_new();
-//     const ws = XLSX.utils.json_to_sheet(movies, {
-//         origin: 'A2',
-//         skipHeader: true
-//     });
-//     XLSX.utils.sheet_add_aoa(ws, headings);
-//     XLSX.utils.book_append_sheet(wb, ws, 'Movies');
-
-//     const buffer = XLSX.write(wb, { bookType: 'csv', type: 'buffer' });
-//     res.attachment('movies.csv');
-
-//     return res.send(buffer);
-
-// }

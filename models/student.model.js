@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./connection');
 
-const Movie = sequelize.define('Movie', {
+const Student = sequelize.define('Student', {
     school: {
         type: DataTypes.STRING
     },
@@ -17,4 +17,4 @@ const Movie = sequelize.define('Movie', {
 }, {
     underscored: true
 });
-module.exports = Movie;
+module.exports = Student;
