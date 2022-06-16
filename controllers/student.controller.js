@@ -14,10 +14,10 @@ exports.import = async(req, res) => {
     if (sheets.length > 0) {
         const data = XLSX.utils.sheet_to_json(wb.Sheets[sheets[0]]);
         const movies = data.map(row => ({
-            movie: row['Movie'],
-            category: row['Category'],
-            director: row['Director'],
-            rating: row['Rating']
+            school: row['School'],
+            class: row['Class'],
+            name: row['Name'],
+            school: row['Score']
         }))
         await Movie.bulkCreate(movies);
     }

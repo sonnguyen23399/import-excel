@@ -2,16 +2,16 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./connection');
 
 const Movie = sequelize.define('Movie', {
-    movie: {
+    school: {
         type: DataTypes.STRING
     },
-    category: {
+    class: {
         type: DataTypes.STRING
     },
-    director: {
+    name: {
         type: DataTypes.STRING
     },
-    rating: {
+    score: {
         type: DataTypes.FLOAT(8, 1)
     }
 }, {

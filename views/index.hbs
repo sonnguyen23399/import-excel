@@ -42,24 +42,24 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Movie</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Director</th>
-                        <th scope="col">Rating</th>
+                        <th scope="col">Trường</th>
+                        <th scope="col">Lớp</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Điểm</th>
                     </tr>
                 </thead>
                 <tbody>
                     {{#each movies}} 
                         <tr>
                             <th scope="row">{{ this.id }}</th>
-                            <td>{{ this.movie }}</td>
-                            <td>{{ this.category }}</td>
-                            <td>{{ this.director }}</td>
-                            <td><span class="badge bg-warning text-dark">{{ this.rating }}</span></td>
+                            <td>{{ this.school }}</td>
+                            <td>{{ this.class }}</td>
+                            <td>{{ this.name }}</td>
+                            <td><span class="badge bg-warning text-dark">{{ this.score }}</span></td>
                         </tr>
                     {{else}}
                         <tr>
-                            <td colspan="5" class="text-center">No Movies Found.</td>
+                            <td colspan="5" class="text-center">No Students Found.</td>
                         </tr>
                     {{/each}}  
                 </tbody>
