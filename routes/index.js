@@ -5,6 +5,5 @@ const { upload } = require('../helpers/uploader');
 
 router.get('/', studentController.index);
 router.post('/import', upload('file'), studentController.import);
-// router.get('/export', studentController.export);
 
 module.exports = router;
